@@ -4,5 +4,25 @@ form{
     display: grid;
     align-items: center;
     justify-content: center;
+  
+}
+
+p{
+    font-size: 18px;
+    text-align: center;
+}
+
+.container{
+    display: grid;
+    justify-items: center;
+
+    
+}
+.avrg{
+    display: grid;
+       
+}
+
+.btn{
    
 }
