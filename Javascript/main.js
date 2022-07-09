@@ -7,6 +7,7 @@
 // Debe crear una función de flecha para calcular el promedio.
 
 let students = [];
+
 const avrgBtn = document.querySelector("#AvrgCalculation");
 const addStudent = document.querySelector("#addStudent");
 addStudent.addEventListener("click", (e) => {
@@ -50,18 +51,16 @@ addStudent.addEventListener("click", (e) => {
   };
 
 
-if(FirstName == "" || LastName == ""){
-  console.log("error")
-}
 
  //push object into array
-  students.push(Objtudents);
+ students.push(Objtudents);
  
-  //insert into table the object values
-  tName.innerHTML = student["name"];
-  tLastname.innerHTML = student["lname"];
-  tId.innerHTML = student["id"];
-  tScore.innerHTML = student["score"];
+ //insert into table the object values
+ tName.innerHTML = student["name"];
+ tLastname.innerHTML = student["lname"];
+ tId.innerHTML = student["id"];
+ tScore.innerHTML = student["score"];
+
 
 
  
@@ -72,9 +71,8 @@ const avrgTxt = document.querySelector("p");
 avrgBtn.addEventListener("click", () => {
   
   const cal = students.reduce((a, b) => a + parseInt(b.score), 0);
-  if (students.length > 0) {
-    avrgTxt.innerHTML = `
-<div>${cal / students.length}</div>
-`;
+  if (Object.keys(Objtudents).length > 0) {
+    avrgTxt.innerHTML = `<div>${parseInt(cal / Object.keys(Objtudents).length)}</div>`
+console.log(cal / Object.keys(Objtudents).length);
   }
 });
