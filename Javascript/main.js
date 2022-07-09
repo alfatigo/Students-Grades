@@ -1,23 +1,12 @@
-// Registro de notas de estudiantes.
-// Formulario: Nombre, Apellido, Matricula, Nota
-// Boton Guardar
-// Crear una clase estudiante para almacenar los valores y representar el registro.
-// Mostrar los datos de los estudiantes en una tabla (Nombre, Apellido, Matricula, Nota)
-// Debajo de la tabla mostrar el promedio de todas las notas.
-// Debe crear una función de flecha para calcular el promedio.
-
 let students = [];
-
+let form = document.querySelector("form");
 const avrgBtn = document.querySelector("#AvrgCalculation");
-const addStudent = document.querySelector("#addStudent");
-addStudent.addEventListener("click", (e) => {
-  //prevent button propagation
-  e.preventDefault();
-  //Get Input values by ID
-  const FirstName = document.getElementById("name").value;
-  const LastName = document.getElementById("lastName").value;
-  const Id = document.getElementById("Id").value;
-  const Score = document.getElementById("score").value;
+window.addEventListener("load", () => {
+
+
+  let status = false;
+  const addStudent = document.querySelector("#addStudent");
+
 
   //Get the table
   const table = document.querySelector("table");
@@ -39,40 +28,45 @@ addStudent.addEventListener("click", (e) => {
     }
   }
 
-  //create a object using class
-  let student = new Students(FirstName, LastName, Id, Score);
-
-  //object
-  Objtudents = {
-    name: student.name,
-    lname: student.lname,
-    id: student.id,
-    score: student.score,
-  };
 
 
+  addStudent.addEventListener('click', (e) => {
+    const FirstName = document.getElementById("name").value;
+    const LastName = document.getElementById("lastName").value;
+    const Id = document.getElementById("Id").value;
+    const Score = document.getElementById("score").value;
+    let student = new Students(FirstName, LastName, Id, Score);
+    e.preventDefault()
+    if (
+      student.name != " " ||
+      student.lname != " " ||
+      student.id != " " ||
+      student.score != " "
 
- //push object into array
- students.push(Objtudents);
- 
- //insert into table the object values
- tName.innerHTML = student["name"];
- tLastname.innerHTML = student["lname"];
- tId.innerHTML = student["id"];
- tScore.innerHTML = student["score"];
+    ) {
+      console.log("true")
+    } else {
+      console.log('false')
+    }
+  });
 
 
 
- 
+
+
+  // students.push(student);
+
+  // tName.innerHTML = student["name"];
+  // tLastname.innerHTML = student["lname"];
+  // tId.innerHTML = student["id"];
+  // tScore.innerHTML = student["score"];
 });
 
 const avrgTxt = document.querySelector("p");
 
 avrgBtn.addEventListener("click", () => {
-  
-  const cal = students.reduce((a, b) => a + parseInt(b.score), 0);
-  if (Object.keys(Objtudents).length > 0) {
-    avrgTxt.innerHTML = `<div>${parseInt(cal / Object.keys(Objtudents).length)}</div>`
-console.log(cal / Object.keys(Objtudents).length);
-  }
+  let avrg = students.reduce((a, b) => {
+    return (a + parseInt(b.score) / students.length);
+  }, 0);
+  console.log(avrg)
 });

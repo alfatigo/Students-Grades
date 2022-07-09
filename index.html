@@ -6,64 +6,66 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="Styles/main.css" />
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="/Javascript/main.js" defer></script>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <title>Students Grades</title>
 </head>
 
 <body>
-  <div class="" >
-    <form action="#" id="form"  class="col s12">
+  <div class="">
+    <form action="#" id="form" class="col s12">
       <h1></h1>
-      <div class="row container" >
+      <div class="row container">
         <div class="input-field col s6">
-          <span >First name</span>
+          <span>Nombre</span>
           <input type="text" name="name" id="name" placeholder="" class="validate" />
-          <span >Last name</span>
-          <input type="text" name="lastName" id="lastName" placeholder=""class="validate" />
-          <span >ID</span>
+          <span>Apellido</span>
+          <input type="text" name="lastName" id="lastName" placeholder="" class="validate" />
+          <span>Matricula</span>
           <input type="text" name="Id" id="Id" placeholder="" class="validate" />
-          <span>Grade</span>
-          <input type="number" min="0"  name="score" id="score" placeholder=""class="validate" />
+          <span>Nota</span>
+          <input type="number" min="0" max="100" name="score" id="score" placeholder="" class="validate" />
         </div>
-       
       </div>
-      <button type="submit" id="addStudent" class="btn waves-effect waves-light">
-        Add Student</button>
+      <div class="btn-area center">
+        <button type="submit" id="addStudent" class="btn waves-effect waves-light">
+          Add Student</button>
+        <button id="AvrgCalculation" class="btn waves-effect waves-light">
+          Promedio
+        </button>
+        <p text></p>
+      </div>
+      
+
   </div>
   </form>
   </div>
-  <section class="container" >
-    <div >
+  <section class="container">
+    <div>
       <br>
-      <div class="avrg">
-        <button  id="AvrgCalculation" class="btn waves-effect waves-light" >
-          Average
-         </button>      
-         <p ></p>
-      </div>
-      
+
+
     </div>
 
-    <table >
-      <thead 
-        <tr> 
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Id</th>
-          <th>Score</th>
+    <table>
+      <thead <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Matricula</th>
+        <th>Nota</th>
         </tr>
       </thead>
       <tbody>
-        
+
         </tr>
       </tbody>
     </table>
   </section>
-  <script src="/Javascript/main.js"></script>
+
 </body>
 
 </html>
