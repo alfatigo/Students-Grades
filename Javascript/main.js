@@ -6,31 +6,29 @@
 // Debajo de la tabla mostrar el promedio de todas las notas.
 // Debe crear una función de flecha para calcular el promedio.
 
-
 let students = [];
-//this is for prevent propagation this mean that the button 
-//wont be a echo and send multiple times information
-
-window.addEventListener("submit", (e) => {
+const avrgBtn = document.querySelector("#AvrgCalculation");
+const addStudent = document.querySelector("#addStudent");
+addStudent.addEventListener("click", (e) => {
   //prevent button propagation
-  e.preventDefault(); 
+  e.preventDefault();
   //Get Input values by ID
   const FirstName = document.getElementById("name").value;
   const LastName = document.getElementById("lastName").value;
   const Id = document.getElementById("Id").value;
   const Score = document.getElementById("score").value;
-  const addStudent = document.querySelector("#addStudent");
-  //Get the table 
+
+  //Get the table
   const table = document.querySelector("table");
   //set where you wanna insert the row in the table
   let row = table.insertRow(1);
   //position for data in the table
-  let cell = row.insertCell(0);
-  let cell2 = row.insertCell(1);
-  let cell3 = row.insertCell(2);
-  let cell4 = row.insertCell(3);
-  let cell5 = row.insertCell(4);
-//constructor for students this initialize 
+  let tName = row.insertCell(0);
+  let tLastname = row.insertCell(1);
+  let tId = row.insertCell(2);
+  let tScore = row.insertCell(3);
+
+  //constructor for students this initialize
   class Students {
     constructor(name, lname, id, score) {
       this.name = name;
@@ -40,24 +38,43 @@ window.addEventListener("submit", (e) => {
     }
   }
 
-  //create a object using class 
+  //create a object using class
   let student = new Students(FirstName, LastName, Id, Score);
 
   //object
-  every = {
+  Objtudents = {
     name: student.name,
     lname: student.lname,
     id: student.id,
     score: student.score,
   };
-  //push object into array 
-  students.push(student);
-  //insert into table the object values
-  cell.innerHTML = student["name"];
-  cell2.innerHTML = student["lname"];
-  cell3.innerHTML = student["id"];
-  cell4.innerHTML = student["score"];
-  cell5.innerHTML = student[""];
+
+
+if(FirstName == "" || LastName == ""){
+  console.log("error")
+}
+
+ //push object into array
+  students.push(Objtudents);
  
+  //insert into table the object values
+  tName.innerHTML = student["name"];
+  tLastname.innerHTML = student["lname"];
+  tId.innerHTML = student["id"];
+  tScore.innerHTML = student["score"];
+
+
+ 
+});
+
+const avrgTxt = document.querySelector("p");
+
+avrgBtn.addEventListener("click", () => {
   
+  const cal = students.reduce((a, b) => a + parseInt(b.score), 0);
+  if (students.length > 0) {
+    avrgTxt.innerHTML = `
+<div>${cal / students.length}</div>
+`;
+  }
 });
