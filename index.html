@@ -9,64 +9,73 @@
   <script src="/Javascript/main.js" defer></script>
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://kit.fontawesome.com/04f80e78ae.js" crossorigin="anonymous"></script>
   <title>Students Grades</title>
 </head>
 
 <body>
-  <div class="">
-    <form action="#" id="form" class="col s12">
-      <h1></h1>
-      <div class="row container">
-        <div class="input-field col s6">
-          <span>Nombre</span>
-          <input type="text" name="name" id="name" placeholder="" class="validate" />
-          <span>Apellido</span>
-          <input type="text" name="lastName" id="lastName" placeholder="" class="validate" />
-          <span>Matricula</span>
-          <input type="text" name="Id" id="Id" placeholder="" class="validate" />
-          <span>Nota</span>
-          <input type="number" min="0" max="100" name="score" id="score" placeholder="" class="validate" />
+
+  <div class="row center ">
+    <form action="#" id="form" class="wrapper">
+   
+      <div class="form__container orange lighten-1 z-depth-2">
+
+        <div class="row ">
+          <div class="input-field col s6 ">
+            <label class="white-text text-darken-2 white-text text-darken-2" for="name" >Nombre</label>
+            <input type="text" name="name" id="name" placeholder="" class="validate white-text text-darken-2" />
+          </div>
+          <div class="input-field col s6">
+            <label class="white-text text-darken-2">Apellido</label>
+            <input type="text" name="lastName" id="lastName" placeholder="" class="validate white-text text-darken-2" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s8">
+            <label class="white-text text-darken-2">Matricula</label>
+            <input type="text" name="Id" id="Id" placeholder="" class="validate white-text text-darken-2" />
+
+          </div>
+
+          <div class="input-field col s4 right ">
+            <label class="white-text text-darken-2">Nota</label>
+            <input type="number" min="0" max="100" name="score" id="score" placeholder="" class="validate white-text text-darken-2" />
+          </div>
+        </div>
+        <div class="btn-area center">
+          <button type="submit" id="addStudent" class="btn waves-effect waves-light orange darken-1">
+            Add Student</button>
+          <button id="AvrgCalculation" class="btn  waves-effect waves-light orange darken-1">
+            Promedio
+          </button>
+          <p ></p>
         </div>
       </div>
-      <div class="btn-area center">
-        <button type="submit" id="addStudent" class="btn waves-effect waves-light">
-          Add Student</button>
-        <button id="AvrgCalculation" class="btn waves-effect waves-light">
-          Promedio
-        </button>
-        <p text></p>
-      </div>
-      
-
+    </form>
   </div>
-  </form>
   </div>
   <section class="container">
     <div>
-      <br>
-
-
+     
     </div>
-
-    <table>
+    <table class="striped ">
       <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>Matricula</th>
-        <th>Nota</th>
-        <th>Accion</th>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Matricula</th>
+          <th>Nota</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
-        <tr>        
+        <tr>
         </tr>
       </tbody>
     </table>
-    
+
   </section>
 
 </body>

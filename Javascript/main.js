@@ -22,6 +22,7 @@ window.addEventListener("load", () => {
   }
   addStudent.addEventListener("click", (e) => {
     e.preventDefault();
+   
   
 
 
@@ -29,7 +30,9 @@ window.addEventListener("load", () => {
     const LastName = document.getElementById("lastName").value;
     const Id = document.getElementById("Id").value;
     const Score = document.getElementById("score").value;
+
     let student = new Students(FirstName, LastName, Id, Score);
+
     if (inputValidator(FirstName, lastName, Id, Score)) {
       //Get the table
       const table = document.querySelector("table");
@@ -42,26 +45,29 @@ window.addEventListener("load", () => {
       let tScore = row.insertCell(3);
       let actionBtn = row.insertCell(4);
 
-      let div = document.createElement('div');
-  let button = document.createElement('button');
+    
+     let addInpt =  (item) => { 
+        const inputRow = document.createElement('input');
+        inputRow.type = 'text';
+        inputRow.value = item; 
+        inputRow.setAttribute('readonly','readonly');
+
+        return inputRow
+      
+     }
+
       students.push(student);
 
       function del(index, arr, val){
             arr[index].name =val
       }
-      students.map((items, index) => {
-        tName.textContent = items.name;
-        tLastname.textContent = items.lname;
-        tId.textContent = items.id;
-        tScore.textContent = items.score;
+      students.map((item, index) => {
+        tName.textContent = item.name
+        tLastname.textContent = item.lname
+        tId.textContent = item.id
+        tScore.textContent = item.score
 
-        actionBtn.append(button)
-        button.setAttribute('id', 'btnDel')
-        button.addEventListener('click', () =>  {
-           del(index, students, 'sdfsdfsd');
-          
-         
-        })
+
         
       });
       form.reset();
@@ -69,6 +75,7 @@ window.addEventListener("load", () => {
       console.log(0);
     }
   });
+ 
 });
 const avrgTxt = document.querySelector("p");
 avrgBtn.addEventListener("click", () => {
