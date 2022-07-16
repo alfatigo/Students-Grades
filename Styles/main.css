@@ -1,28 +1,58 @@
+* {
+  padding: 0%;
+  margin: 0%;
+}
+body{
+    background-color: #FAFAFA;
+}
 
+p {
+  font-size: 18px;
+  text-align: center;
+}
 
-form{
+.wrapper {
     display: grid;
     align-items: center;
     justify-content: center;
-  
+
+  width: 100%;
+  margin: 1rem;
 }
 
-p{
-    font-size: 18px;
-    text-align: center;
+.form__container {
+  border-radius: 3px;
+  padding: 50px 50px;
+  max-width: 30rem;
+  min-width: 26rem;
 }
-
-.container{
+.edit-btn{
+  cursor: pointer;
+  padding: 0.6rem;
+  border: transparent 1px solid;  
+  transition: ease 0.5s ;
+}
+.edit-btn:hover{
+    color: green;
+    border: 1px green solid;
+    transition:ease-in-out 0.2s ;
+}
+.tData::before{
+  content: '';
+  background-color: red;
+  width: 25px;
+}
+.avrgScore{
+  margin: 3rem;
+  font-size: 2rem;
+}
+@media (max-width: 994px) {
+  .wrapper {
     display: grid;
-    justify-items: center;
+    align-items: center;
+    justify-content: center;
 
-    
-}
-.avrg{
-    display: grid;
-       
-}
-
-.btnDel{
-   
+    margin: 0px;
+    min-width: 5rem;
+  }
 }
