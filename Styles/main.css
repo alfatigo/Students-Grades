@@ -26,7 +26,26 @@ p {
   max-width: 30rem;
   min-width: 26rem;
 }
-
+.onDeletebtn{
+  cursor: pointer;
+  padding: 0.6rem;
+  border: transparent 1px solid;  
+  transition: ease 0.5s ;
+}
+.onDeletebtn:hover{
+    color: red;
+    border: 1px red solid;
+    transition:ease-in-out 0.2s ;
+}
+.tData::before{
+  content: '';
+  background-color: red;
+  width: 25px;
+}
+.avrgScore{
+  margin: 3rem;
+  font-size: 2rem;
+}
 @media (max-width: 994px) {
   .wrapper {
     display: grid;

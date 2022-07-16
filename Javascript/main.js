@@ -1,10 +1,12 @@
 let form = document.querySelector("form");
 let students = [];
-const avrgBtn = document.querySelector("#AvrgCalculation");
+
 window.addEventListener("load", () => {
   const addStudent = document.querySelector("#addStudent");
+  let local = JSON.parse(localStorage.getItem("students"));
 
-  //constructor for students this initialize
+  let table = document.querySelector("table");
+
   class Students {
     constructor(name, lname, id, score) {
       this.name = name;
@@ -13,75 +15,86 @@ window.addEventListener("load", () => {
       this.score = score;
     }
   }
+  //#region input validation
   function inputValidator(firstName, lastName, id, score) {
     if (firstName != "" && lastName != "" && id != "" && score != "") {
       return true;
     } else {
+      alert("Existen campos vacios!");
       return false;
     }
   }
+  //#endregion
   addStudent.addEventListener("click", (e) => {
     e.preventDefault();
-   
-  
-
-
-    const FirstName = document.getElementById("name").value;
-    const LastName = document.getElementById("lastName").value;
-    const Id = document.getElementById("Id").value;
-    const Score = document.getElementById("score").value;
-
+    //#region set input Buttons
+    const FirstName = document.getElementById("name").value.trim();
+    const LastName = document.getElementById("lastName").value.trim();
+    const Id = document.getElementById("Id").value.trim();
+    const Score = document.getElementById("score").value.trim();
+    //#endregion
+    // Create new student
     let student = new Students(FirstName, LastName, Id, Score);
 
     if (inputValidator(FirstName, lastName, Id, Score)) {
-      //Get the table
-      const table = document.querySelector("table");
-      //set where you wanna insert the row in the table
+      //#region Table Position
       let row = table.insertRow(1);
       //position for data in the table
       let tName = row.insertCell(0);
       let tLastname = row.insertCell(1);
       let tId = row.insertCell(2);
       let tScore = row.insertCell(3);
-      let actionBtn = row.insertCell(4);
+      let editBtn = row.insertCell(4);
+      let delBtn = row.insertCell(4);
+      //#endregion
 
-    
-     let addInpt =  (item) => { 
-        const inputRow = document.createElement('input');
-        inputRow.type = 'text';
-        inputRow.value = item; 
-        inputRow.setAttribute('readonly','readonly');
-
-        return inputRow
-      
-     }
-
+      //#region add Obj Student to Array
       students.push(student);
+      //#endregion
 
-      function del(index, arr, val){
-            arr[index].name =val
-      }
+      //#region Add student to tha table
       students.map((item, index) => {
-        tName.textContent = item.name
-        tLastname.textContent = item.lname
-        tId.textContent = item.id
-        tScore.textContent = item.score
-
-
-        
+        tName.textContent = item.name;
+        tLastname.textContent = item.lname;
+        tId.textContent = item.id;
+        tScore.textContent = item.score;
+        delBtn.innerHTML = `<i class='onDeletebtn material-icons' onClick='onDelete(this, ${index})'>delete</i>`;
       });
+      //#endregion
+
+      //Clear the input Form
       form.reset();
     } else {
-      console.log(0);
     }
+
+    localStorage.setItem("students", JSON.stringify(students));
   });
- 
 });
-const avrgTxt = document.querySelector("p");
-avrgBtn.addEventListener("click", () => {
+
+//#region Action Buttons
+
+function onDelete(td, index) {
+  if (confirm("Are you sure you want to delete this?")) {
+    row = td.parentElement.parentElement;
+    document.querySelector("table").deleteRow(row.rowIndex);
+    students.splice(index, 1);
+  }
+}
+
+//#endregion
+
+//#region Get Average Score
+
+const avrgBtn = document.querySelector("#AvrgCalculation");
+const avrgTxt = document.querySelector("output");
+avrgBtn.addEventListener("click", (e) => {
   e.preventDefault();
+
   let avrg = students.reduce((a, b) => {
     return a + parseInt(b.score) / students.length;
   }, 0);
-  console.log(avrg);
+
+  if (avrg <= 0) alert("El promedio es menor o igual a 0");
+  else avrgTxt.textContent = avrg;
 });
+//#endregion
